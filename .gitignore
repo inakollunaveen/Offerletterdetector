@@ -1,0 +1,5 @@
+LanguageTool-stable.zip
+node_modules/
+.env
+venv/
+uploads/
