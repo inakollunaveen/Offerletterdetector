@@ -1,0 +1,46 @@
+.verify-page {
+  text-align: center;
+  padding: 50px;
+}
+
+.verify-page input[type="file"] {
+  margin: 20px 0;
+}
+
+.verify-page button {
+  padding: 10px 20px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.verify-page button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.result {
+  margin-top: 30px;
+  text-align: left;
+  display: inline-block;
+}
+
+.result h3 {
+  font-size: 22px;
+}
+
+.result .fake {
+  color: #e74c3c;
+}
+
+.result .genuine {
+  color: #27ae60;
+}
+
+.result ul {
+  list-style-type: disc;
+  margin-top: 10px;
+  padding-left: 20px;
+}
