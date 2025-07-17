@@ -33,4 +33,4 @@ def check_over_promises(text):
 def check_grammar_simple(text):
     tool = language_tool_python.LanguageTool('en-US')
     matches = tool.check(text)
-    return len(matches) > 15
+    return len(matches) > 30

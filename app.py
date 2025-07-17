@@ -1,14 +1,15 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
-from utils.helpers import get_verdict
-from utils.pdf_parser import extract_text
+from utils.hel import get_verdict
+from utils.pdfs import extract_text
 from dotenv import load_dotenv
 
-# Load environment variables (Hugging Face key)
+# Load environment variables
 load_dotenv()
 HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
 
+# File upload path
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -25,7 +26,7 @@ def analyze():
         if file.filename == '':
             return jsonify({'error': 'No selected file'}), 400
 
-        # Save uploaded file
+        # Save file
         file_path = os.path.join(UPLOAD_FOLDER, file.filename)
         file.save(file_path)
         print(f"✅ File saved at: {file_path}")
@@ -36,11 +37,10 @@ def analyze():
             print("❌ No text extracted from PDF.")
             return jsonify({'error': 'No text extracted from PDF. Possibly scanned or empty.'}), 400
 
-        # Get verdict
+        # Analyze
         verdict, issues = get_verdict(text)
-
         print(f"✅ Verdict: {verdict}")
-        print(f"✅ Issues: {issues}")
+        print(f"📝 Issues: {issues}")
 
         return jsonify({
             'verdict': verdict,
@@ -53,7 +53,7 @@ def analyze():
 
 @app.route('/')
 def index():
-    return "✅ Backend is running (Strict Logic + Hugging Face Hybrid)."
+    return "✅ Backend is running (AI + Rule-Based Fake Offer Letter Detector)."
 
 if __name__ == '__main__':
     app.run(debug=True)
