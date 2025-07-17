@@ -1,11 +1,1 @@
 LanguageTool-stable.zip
-# Ignore large zip files
-*.zip
-
-# Ignore Python cache
-__pycache__/
-*.pyc
-
-# Ignore virtual environments
-.venv/
-env/
