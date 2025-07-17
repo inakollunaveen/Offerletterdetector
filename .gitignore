@@ -1,5 +1,11 @@
 LanguageTool-stable.zip
-node_modules/
-.env
-venv/
-uploads/
+# Ignore large zip files
+*.zip
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore virtual environments
+.venv/
+env/
